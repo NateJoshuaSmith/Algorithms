@@ -1,0 +1,6 @@
+This Project uses PySide6 module from Qt
+To run this project, install PySide6
+
+---
+
+pip install PySide6
