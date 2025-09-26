@@ -195,20 +195,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="speed_label">
-       <property name="text">
-        <string>Speed:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="slider">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>

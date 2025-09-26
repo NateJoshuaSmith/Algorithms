@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QGraphicsView, QHBoxLayout,
-    QLabel, QPushButton, QSizePolicy, QSlider,
-    QSpinBox, QTextEdit, QVBoxLayout, QWidget)
+    QLabel, QPushButton, QSizePolicy, QSpinBox,
+    QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -115,17 +115,6 @@ class Ui_Widget(object):
 
         self.horizontalLayout.addWidget(self.reset_button)
 
-        self.speed_label = QLabel(Widget)
-        self.speed_label.setObjectName(u"speed_label")
-
-        self.horizontalLayout.addWidget(self.speed_label)
-
-        self.slider = QSlider(Widget)
-        self.slider.setObjectName(u"slider")
-        self.slider.setOrientation(Qt.Orientation.Horizontal)
-
-        self.horizontalLayout.addWidget(self.slider)
-
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -171,7 +160,6 @@ class Ui_Widget(object):
         self.start_button.setText(QCoreApplication.translate("Widget", u"Start", None))
         self.pause_button.setText(QCoreApplication.translate("Widget", u"Pause", None))
         self.reset_button.setText(QCoreApplication.translate("Widget", u"Reset", None))
-        self.speed_label.setText(QCoreApplication.translate("Widget", u"Speed:", None))
         self.time_label.setText(QCoreApplication.translate("Widget", u"Time: ", None))
         self.status_label.setText(QCoreApplication.translate("Widget", u"Status: ", None))
     # retranslateUi
