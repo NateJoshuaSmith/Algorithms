@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget, QGraphicsScene
+from PySide6.QtWidgets import QWidget, QGraphicsScene, QMessageBox
 from ui_widget import Ui_Widget
 import algo
 import random
@@ -57,9 +57,12 @@ class Widget(QWidget, Ui_Widget):
 
         # clearing text to make sure text_edit is empty
         self.text_view.setText("")
+
+        any_checked = False # to see if any of the checkboxes are checked
     
         for name, (checkbox, func) in algos.items():
             if checkbox.isChecked():
+                any_checked = True
                 arr = array_copy.copy()
                 start = time.perf_counter() # starts the timer
                 sorted_array = func(arr)
@@ -68,6 +71,16 @@ class Widget(QWidget, Ui_Widget):
                 results.append((name, elapsed))
                 # shows all the sorted arrays and the time elapsed for each selected checkbox algo
                 self.text_view.append(f"{name}: {str(sorted_array)}\nTime: {elapsed:.6f} secs")
+
+        if not any_checked:
+            message = QMessageBox(self)
+            message.setMinimumSize(700, 200)
+            message.setWindowTitle("Select Algorithm!")
+            message.setText("You must select at least one sorting algorithm.")
+            message.setIcon(QMessageBox.Critical)
+            message.setStandardButtons(QMessageBox.Ok)
+            message.exec()
+            return
     
         if results:
             self.figure.clear()
