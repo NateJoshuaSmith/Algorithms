@@ -27,100 +27,112 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QSplitter" name="splitter">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <widget class="QLabel" name="algorithm_label">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Algorithm:</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="combo_box">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <item>
-       <property name="text">
-        <string>Bubble Sort</string>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="algorithm_label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-      </item>
-      <item>
        <property name="text">
-        <string>Insertion Sort</string>
+        <string>Algorithm:</string>
        </property>
-      </item>
-      <item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="combo_box">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <item>
+        <property name="text">
+         <string>Bubble Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Insertion Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Merge Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Quick Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Heap Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Counting Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Radix Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Bucket Sort</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Quick Select Sort</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="array_size_label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string>Merge Sort</string>
+        <string>Array Size:</string>
        </property>
-      </item>
-      <item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spin_box">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="create_array_button">
        <property name="text">
-        <string>Quick Sort</string>
+        <string>Create Array</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Heap Sort</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Counting Sort</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Radix Sort</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Bucket Sort</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Quick Select Sort</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="array_size_label">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Array Size:</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spin_box">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-     </widget>
-    </widget>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QGraphicsView" name="graph_view"/>

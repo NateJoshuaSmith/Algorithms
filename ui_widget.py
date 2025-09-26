@@ -17,8 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QGraphicsView, QHBoxLayout,
     QLabel, QPushButton, QSizePolicy, QSlider,
-    QSpinBox, QSplitter, QTextEdit, QVBoxLayout,
-    QWidget)
+    QSpinBox, QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -29,18 +28,19 @@ class Ui_Widget(object):
         Widget.setMaximumSize(QSize(591, 16777215))
         self.verticalLayout = QVBoxLayout(Widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.splitter = QSplitter(Widget)
-        self.splitter.setObjectName(u"splitter")
-        self.splitter.setOrientation(Qt.Orientation.Horizontal)
-        self.algorithm_label = QLabel(self.splitter)
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.algorithm_label = QLabel(Widget)
         self.algorithm_label.setObjectName(u"algorithm_label")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.algorithm_label.sizePolicy().hasHeightForWidth())
         self.algorithm_label.setSizePolicy(sizePolicy)
-        self.splitter.addWidget(self.algorithm_label)
-        self.combo_box = QComboBox(self.splitter)
+
+        self.horizontalLayout_2.addWidget(self.algorithm_label)
+
+        self.combo_box = QComboBox(Widget)
         self.combo_box.addItem("")
         self.combo_box.addItem("")
         self.combo_box.addItem("")
@@ -56,21 +56,32 @@ class Ui_Widget(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.combo_box.sizePolicy().hasHeightForWidth())
         self.combo_box.setSizePolicy(sizePolicy1)
-        self.splitter.addWidget(self.combo_box)
-        self.array_size_label = QLabel(self.splitter)
+
+        self.horizontalLayout_2.addWidget(self.combo_box)
+
+        self.array_size_label = QLabel(Widget)
         self.array_size_label.setObjectName(u"array_size_label")
         sizePolicy.setHeightForWidth(self.array_size_label.sizePolicy().hasHeightForWidth())
         self.array_size_label.setSizePolicy(sizePolicy)
-        self.splitter.addWidget(self.array_size_label)
-        self.spin_box = QSpinBox(self.splitter)
+
+        self.horizontalLayout_2.addWidget(self.array_size_label)
+
+        self.spin_box = QSpinBox(Widget)
         self.spin_box.setObjectName(u"spin_box")
         sizePolicy1.setHeightForWidth(self.spin_box.sizePolicy().hasHeightForWidth())
         self.spin_box.setSizePolicy(sizePolicy1)
         self.spin_box.setMinimum(1)
         self.spin_box.setMaximum(100)
-        self.splitter.addWidget(self.spin_box)
 
-        self.verticalLayout.addWidget(self.splitter)
+        self.horizontalLayout_2.addWidget(self.spin_box)
+
+        self.create_array_button = QPushButton(Widget)
+        self.create_array_button.setObjectName(u"create_array_button")
+
+        self.horizontalLayout_2.addWidget(self.create_array_button)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.graph_view = QGraphicsView(Widget)
         self.graph_view.setObjectName(u"graph_view")
@@ -148,6 +159,7 @@ class Ui_Widget(object):
         self.combo_box.setItemText(8, QCoreApplication.translate("Widget", u"Quick Select Sort", None))
 
         self.array_size_label.setText(QCoreApplication.translate("Widget", u"Array Size:", None))
+        self.create_array_button.setText(QCoreApplication.translate("Widget", u"Create Array", None))
         self.text_view.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
