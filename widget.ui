@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>591</width>
-    <height>576</height>
+    <width>650</width>
+    <height>704</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>591</width>
-    <height>576</height>
+    <width>650</width>
+    <height>704</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>591</width>
-    <height>16777215</height>
+    <width>650</width>
+    <height>60</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -27,75 +27,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="algorithm_label">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Algorithm:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="combo_box">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <item>
-        <property name="text">
-         <string>Bubble Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Insertion Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Merge Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Quick Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Heap Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Counting Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Radix Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Bucket Sort</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Quick Select Sort</string>
-        </property>
-       </item>
-      </widget>
-     </item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="array_size_label">
        <property name="sizePolicy">
@@ -135,7 +67,89 @@
     </layout>
    </item>
    <item>
-    <widget class="QGraphicsView" name="graph_view"/>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QCheckBox" name="bubble_sort_checkbox">
+       <property name="text">
+        <string>Bubble Sort</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="insertion_sort_checkbox">
+       <property name="text">
+        <string>Insertion Sort</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="merge_sort_checkbox">
+       <property name="text">
+        <string>Merge Sort</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QCheckBox" name="quick_sort_checkbox">
+       <property name="text">
+        <string>Quick Sort</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="heap_sort_checkbox">
+       <property name="text">
+        <string>Heap Sort</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="counting_sort_checkbox">
+       <property name="text">
+        <string>Counting Sort</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QCheckBox" name="radix_sort_checkbox">
+       <property name="text">
+        <string>Radix Sort</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="bucket_sort_checkbox">
+       <property name="text">
+        <string>Bucket Sort</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="quick_select_checkbox">
+       <property name="text">
+        <string>Quick Select</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGraphicsView" name="graph_view">
+     <property name="maximumSize">
+      <size>
+       <width>632</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QTextEdit" name="text_view">
@@ -153,8 +167,8 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>574</width>
-       <height>41</height>
+       <width>632</width>
+       <height>60</height>
       </size>
      </property>
      <property name="readOnly">
@@ -196,20 +210,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="time_label">
-     <property name="text">
-      <string>Time: </string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="status_label">
-     <property name="text">
-      <string>Status: </string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

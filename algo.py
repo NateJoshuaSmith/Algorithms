@@ -14,6 +14,7 @@ def bubble_sort(arr):
             break
     return arr
 
+
 #Insertion Sort
 def insertion_sort(arr):
     n = len(arr)
@@ -80,17 +81,18 @@ def heap_sort(arr):
         left = 2 * i + 1
         right = 2 * i + 2
         if left < n and a[left] > a[largest]:
-           largest = left
+            largest = left
         if right < n and a[right] > a[largest]:
-           largest = right
+            largest = right
         if largest != i:
             a[i], a[largest] = a[largest], a[i]
+            heapify(a, n, largest)
     n = len(arr)
     for i in range(n // 2 - 1, -1, -1):
         heapify(arr, n, i)
-        for end in range(n-1, 0, -1):
-            arr[0], arr[end] = arr[end], arr[0]
-            heapify(arr, end, 0)
+    for end in range(n-1, 0, -1):
+        arr[0], arr[end] = arr[end], arr[0]
+        heapify(arr, end, 0)
     return arr
 
 #counting sort

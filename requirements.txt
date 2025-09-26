@@ -1,6 +1,7 @@
-This Project uses PySide6 module from Qt
-To run this project, install PySide6
+This Project uses PySide6 module from Qt aswell as matplotlib
 
 ---
+(To install the modules)
 
 pip install PySide6
+pip install matplotlib
