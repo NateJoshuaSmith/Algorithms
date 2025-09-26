@@ -1,7 +1,9 @@
 This Project uses PySide6 module from Qt aswell as matplotlib
 
 ---
-(To install the modules)
+(To install the packages)
 
 pip install PySide6
 pip install matplotlib
+
+inside PowerShell / VSCode or any CLI (Command Line Interface) where python and pip are able to be used

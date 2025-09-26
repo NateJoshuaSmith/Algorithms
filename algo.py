@@ -1,7 +1,6 @@
 from typing import List
 
 #Bubble Sort
-
 def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
@@ -112,29 +111,24 @@ def counting_sort(arr):
     return output
 
 
-#helps measuring execution time for sorting
- #for hinting and clarity in func definitions
- #Define Helper Function to implement counting Sort on digit by digit
+# Counting Sort
 def counting_sort_by_digit(arr: List[int], exp: int, base: int = 10) -> None:
     n = len(arr)
     output = [0] * n
     count = [0] * base
-    #Step 1: Count Occurences of digits
     for num in arr:
         digit = (num // exp) % base
         count[digit] += 1
-    #Step 2: Covert counts into cumulative positions
     for i in range(1, base):
         count[i] += count[i - 1]
-    #Step 3: Build the output array in stable manner (going backwards)
     for i in range(n -1, -1, -1):
         digit = (arr[i] // exp) % base
         output[count[digit] - 1] = arr[i]
         count[digit] -= 1
-    #Step 4: Copy the output array back to arr[]
     for i in range(n):
         arr[i] = output[i]
 
+# Radix Sort
 def radix_sort(arr: List[int], base: int = 10) -> List[int]:
     if not arr:
         return arr
@@ -149,26 +143,21 @@ def bucket_sort(arr: List[float]) -> List[float]:
     n = len(arr)
     if n == 0:
         return arr
-    #Step 1: Create n empty buckets
     buckets: List[List[float]] = [[] for _ in range(n)]
-    #Step 2: Distribute elements into their appropriate buckets
     for x in arr:
         idx = int(n * x)
         if idx >= n:
             idx = n - 1
         buckets[idx].append(x)
-    #Step 3: Sort each bucket individually
     for b in buckets:
         b.sort()
-    #Step 4: Concatenate buckets into the final sorted list
     out: List[float] = []
     for b in buckets:
         out.extend(b)
     return out
 
 
-
-#Step1: Partition Function (same as in Quick Sort)
+#Quick Select
 def partition(arr: List[int], low: int, high: int) -> int:
     pivot = arr[high]
     i = low
@@ -178,7 +167,6 @@ def partition(arr: List[int], low: int, high: int) -> int:
             i += 1
     arr[i], arr[high] = arr[high], arr[i]
     return i
- #Step 2: Quick Select Algorithm
 def quick_select(arr: List[int], low: int, high: int, k: int) -> int:
     if low <= high:
         pi = partition(arr, low, high)

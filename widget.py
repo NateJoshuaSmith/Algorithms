@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget, QGraphicsScene, QMessageBox
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QMessageBox, QInputDialog
 from ui_widget import Ui_Widget
 import algo
 import random
@@ -23,9 +23,8 @@ class Widget(QWidget, Ui_Widget):
         self.canvas = FigureCanvas(self.figure)
 
         # creates a QGraphicScene and sets it to graph_view
-        self.scene = QGraphicsScene()
-        self.graph_view.setScene(self.scene)
-        self.scene.addWidget(self.canvas)
+        layout = QVBoxLayout(self.graph_view)
+        layout.addWidget(self.canvas)
 
 
 
@@ -72,6 +71,27 @@ class Widget(QWidget, Ui_Widget):
                 # shows all the sorted arrays and the time elapsed for each selected checkbox algo
                 self.text_view.append(f"{name}: {str(sorted_array)}\nTime: {elapsed:.6f} secs")
 
+        # case for quickselect, since it takes a value of k
+        if self.quick_select_checkbox.isChecked():
+            any_checked = True
+            arr = array_copy.copy()
+            k, ok = QInputDialog.getInt(
+                self,
+                "Quick Select",
+                f"Enter k (1 to {len(arr)}):",
+                1,
+                1,
+                len(arr)
+            )
+            if ok:
+                start = time.perf_counter() # starts the timer
+                result = algo.quick_select(arr, 0, len(arr) - 1, k - 1)
+                end = time.perf_counter() # ends the timer
+                elapsed = end - start
+                self.text_view.append(f"Quick Select: {k}-th smallest element: {result} \nOriginal Array: {self.array} \nPartially Sorted Array: {arr} \nTime: {elapsed:.6f} secs")
+                results.append(("Quick Select", elapsed)) # returns result
+        
+        # case where if no checkboxes are selected, displays warning
         if not any_checked:
             message = QMessageBox(self)
             message.setMinimumSize(700, 200)
@@ -81,7 +101,8 @@ class Widget(QWidget, Ui_Widget):
             message.setStandardButtons(QMessageBox.Ok)
             message.exec()
             return
-    
+
+        # creates graph from results of algo and time
         if results:
             self.figure.clear()
             ax = self.figure.add_subplot(111)
@@ -92,7 +113,7 @@ class Widget(QWidget, Ui_Widget):
             ax.bar(names, times, color='blue')
             ax.set_ylabel("Time(s)")
             ax.set_title("Sorting Algorithm Time Comparison")
-        ax.set_xticklabels(names, fontsize=6.5)  # fontsize for labels
+        ax.set_xticklabels(names, fontsize=5.5)  # fontsize for labels
         self.figure.tight_layout()
         self.canvas.draw()
         

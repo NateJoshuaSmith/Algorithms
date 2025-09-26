@@ -23,9 +23,9 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(650, 704)
+        Widget.resize(650, 800)
         Widget.setMinimumSize(QSize(650, 704))
-        Widget.setMaximumSize(QSize(650, 60))
+        Widget.setMaximumSize(QSize(650, 800))
         self.verticalLayout = QVBoxLayout(Widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_3 = QHBoxLayout()
@@ -48,7 +48,7 @@ class Ui_Widget(object):
         sizePolicy1.setHeightForWidth(self.spin_box.sizePolicy().hasHeightForWidth())
         self.spin_box.setSizePolicy(sizePolicy1)
         self.spin_box.setMinimum(1)
-        self.spin_box.setMaximum(100)
+        self.spin_box.setMaximum(5000)
 
         self.horizontalLayout_3.addWidget(self.spin_box)
 
@@ -131,7 +131,7 @@ class Ui_Widget(object):
         sizePolicy1.setHeightForWidth(self.text_view.sizePolicy().hasHeightForWidth())
         self.text_view.setSizePolicy(sizePolicy1)
         self.text_view.setMinimumSize(QSize(571, 41))
-        self.text_view.setMaximumSize(QSize(632, 60))
+        self.text_view.setMaximumSize(QSize(632, 120))
         self.text_view.setReadOnly(True)
 
         self.verticalLayout.addWidget(self.text_view)
@@ -142,16 +142,6 @@ class Ui_Widget(object):
         self.start_button.setObjectName(u"start_button")
 
         self.horizontalLayout.addWidget(self.start_button)
-
-        self.pause_button = QPushButton(Widget)
-        self.pause_button.setObjectName(u"pause_button")
-
-        self.horizontalLayout.addWidget(self.pause_button)
-
-        self.reset_button = QPushButton(Widget)
-        self.reset_button.setObjectName(u"reset_button")
-
-        self.horizontalLayout.addWidget(self.reset_button)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -184,7 +174,5 @@ class Ui_Widget(object):
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
         self.start_button.setText(QCoreApplication.translate("Widget", u"Start", None))
-        self.pause_button.setText(QCoreApplication.translate("Widget", u"Pause", None))
-        self.reset_button.setText(QCoreApplication.translate("Widget", u"Reset", None))
     # retranslateUi
 
