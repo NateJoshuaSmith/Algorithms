@@ -1,3 +1,31 @@
+from typing import List
+
+#Bubble Sort
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if not swapped:
+            break
+    return arr
+
+#Insertion Sort
+def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
 #Merge Sort
 def merge_sort(arr):
     if len(arr) <= 1:
@@ -21,9 +49,140 @@ def merge(left, right):
     result.extend(right[j:])
     return result
 
- #Testing the algorithm
-if __name__ == "__main__":
-    data = [64, 34, 25, 12, 22, 11, 90]
-    print("Unsorted Data", data)
-    sorted_data = merge_sort(data)
-    print("Sorted Data", sorted_data)
+#Quick Sort
+def quick_sort(arr):
+    def partition(low, high):
+        pivot = arr[(low+high) // 2]
+        i = low
+        j = high
+        while i <= j:
+            while arr[i] < pivot:
+                i += 1
+            while arr[j] > pivot:
+                j -= 1
+            if i <= j:
+                arr[i], arr[j] = arr[j], arr[i]
+                i += 1
+                j -= 1
+        return i, j
+    def sort(low, high):
+        if low < high:
+            i, j  = partition(low, high)
+            sort(low, j)
+            sort(i, high)
+    sort(0, len(arr) - 1)
+    return arr
+
+#Heap Sort
+def heap_sort(arr):
+    def heapify(a, n, i):
+        largest = i
+        left = 2 * i + 1
+        right = 2 * i + 2
+        if left < n and a[left] > a[largest]:
+           largest = left
+        if right < n and a[right] > a[largest]:
+           largest = right
+        if largest != i:
+            a[i], a[largest] = a[largest], a[i]
+    n = len(arr)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+        for end in range(n-1, 0, -1):
+            arr[0], arr[end] = arr[end], arr[0]
+            heapify(arr, end, 0)
+    return arr
+
+#counting sort
+def counting_sort(arr):
+    if not arr:
+        return []
+    min_val = min(arr)
+    max_val = max(arr)
+    k = max_val - min_val + 1
+    count = [0] * k
+    for num in arr:
+        count[num - min_val] += 1
+    output = []
+    for i, freq in enumerate(count):
+        value = i + min_val
+        output.extend([value] * freq)
+    return output
+
+
+#helps measuring execution time for sorting
+ #for hinting and clarity in func definitions
+ #Define Helper Function to implement counting Sort on digit by digit
+def counting_sort_by_digit(arr: List[int], exp: int, base: int = 10) -> None:
+    n = len(arr)
+    output = [0] * n
+    count = [0] * base
+    #Step 1: Count Occurences of digits
+    for num in arr:
+        digit = (num // exp) % base
+        count[digit] += 1
+    #Step 2: Covert counts into cumulative positions
+    for i in range(1, base):
+        count[i] += count[i - 1]
+    #Step 3: Build the output array in stable manner (going backwards)
+    for i in range(n -1, -1, -1):
+        digit = (arr[i] // exp) % base
+        output[count[digit] - 1] = arr[i]
+        count[digit] -= 1
+    #Step 4: Copy the output array back to arr[]
+    for i in range(n):
+        arr[i] = output[i]
+
+def radix_sort(arr: List[int], base: int = 10) -> List[int]:
+    if not arr:
+        return arr
+    max_val = max(arr)
+    exp = 1
+    while max_val // exp > 0:
+        counting_sort_by_digit(arr, exp, base)
+        exp *= base
+    return arr
+
+def bucket_sort(arr: List[float]) -> List[float]:
+    n = len(arr)
+    if n == 0:
+        return arr
+    #Step 1: Create n empty buckets
+    buckets: List[List[float]] = [[] for _ in range(n)]
+    #Step 2: Distribute elements into their appropriate buckets
+    for x in arr:
+        idx = int(n * x)
+        if idx >= n:
+            idx = n - 1
+        buckets[idx].append(x)
+    #Step 3: Sort each bucket individually
+    for b in buckets:
+        b.sort()
+    #Step 4: Concatenate buckets into the final sorted list
+    out: List[float] = []
+    for b in buckets:
+        out.extend(b)
+    return out
+
+
+
+#Step1: Partition Function (same as in Quick Sort)
+def partition(arr: List[int], low: int, high: int) -> int:
+    pivot = arr[high]
+    i = low
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+    arr[i], arr[high] = arr[high], arr[i]
+    return i
+ #Step 2: Quick Select Algorithm
+def quick_select(arr: List[int], low: int, high: int, k: int) -> int:
+    if low <= high:
+        pi = partition(arr, low, high)
+        if pi == k:
+            return arr[pi]
+        elif pi > k:
+            return quick_select(arr, low, pi - 1, k)
+        else:
+            return quick_select(arr, pi + 1, high, k)

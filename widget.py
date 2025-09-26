@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QWidget
 from ui_widget import Ui_Widget
 import algo
 import random
+import time
 
 class Widget(QWidget, Ui_Widget):
     def __init__(self):
@@ -24,7 +25,44 @@ class Widget(QWidget, Ui_Widget):
     
     def start_clicked(self):
         algorithm = self.combo_box.currentText()
+
+        start = time.perf_counter() # starts timing algorithms
+
+        if algorithm == "Bubble Sort":
+            sorted_array = algo.bubble_sort(self.array)
+            self.text_view.setText(f"Sorted: {str(sorted_array)}")
+
+        if algorithm == "Insertion Sort":
+            sorted_array = algo.insertion_sort(self.array)
+            self.text_view.setText(f"Sorted: {str(sorted_array)}")
+
         if algorithm == "Merge Sort":
             sorted_array = algo.merge_sort(self.array)
             self.text_view.setText(f"Sorted: {str(sorted_array)}")
+
+        if algorithm == "Quick Sort":
+            sorted_array = algo.quick_sort(self.array)
+            self.text_view.setText(f"Sorted: {str(sorted_array)}")
+
+        if algorithm == "Heap Sort":
+            sorted_array = algo.heap_sort(self.array)
+            self.text_view.setText(f"Sorted: {str(sorted_array)}")
+
+        if algorithm == "Counting Sort":
+            sorted_array = algo.counting_sort(self.array)
+            self.text_view.setText(f"Sorted: {str(sorted_array)}")  
+
+        if algorithm == "Radix Sort":
+            sorted_array = algo.radix_sort(self.array)
+            self.text_view.setText(f"Sorted: {str(sorted_array)}")  
+
+        if algorithm == "Bucket Sort":
+            sorted_array = algo.bucket_sort(self.array)
+            self.text_view.setText(f"Sorted: {str(sorted_array)}")  
+
+        end = time.perf_counter()
+        elapse = end - start
+
+        self.time_label.setText(f"Time: {elapse:.6f} seconds")
+        self.status_label.setText(f"Status: {algorithm}, Array Size: {len(self.array)}") # set status to the current algorithm selected
         
