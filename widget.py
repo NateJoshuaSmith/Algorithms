@@ -69,7 +69,7 @@ class Widget(QWidget, Ui_Widget):
                 elapsed = end - start
                 results.append((name, elapsed))
                 # shows all the sorted arrays and the time elapsed for each selected checkbox algo
-                self.text_view.append(f"{name}: {str(sorted_array)}\nTime: {elapsed:.6f} secs")
+                self.text_view.append(f"{name}: {str(sorted_array)}\nTime: {elapsed:.6f} secs\n")
 
         # case for quickselect, since it takes a value of k
         if self.quick_select_checkbox.isChecked():
